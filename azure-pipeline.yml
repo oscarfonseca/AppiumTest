@@ -12,6 +12,7 @@ pool:
     - msbuild
     - visualstudio
     - vstest
+    - windows10
 
 steps:
 - checkout: self
