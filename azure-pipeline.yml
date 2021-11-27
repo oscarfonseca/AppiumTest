@@ -20,7 +20,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: $(Build.SourcesDirectory)\WpfApp\WpfApp.sln
+    projects: '**/*.csproj'
 
 - task: NodeTool@0
   inputs:
