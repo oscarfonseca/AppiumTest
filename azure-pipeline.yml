@@ -8,12 +8,27 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
+  demands: 
+    - DotNetFramework
+    - msbuild
+    - visualstudio
+    - vstest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- checkout: self
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: WpfApp.sln
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '6.x'
+
+- task: VSTest@2
+  inputs:
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+      **\AppiumTests.dll
+    searchFolder: '$(System.DefaultWorkingDirectory)'
