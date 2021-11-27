@@ -19,7 +19,6 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: '**/*.sln'
 
 - task: NodeTool@0
   inputs:
