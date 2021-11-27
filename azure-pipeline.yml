@@ -7,7 +7,6 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
   demands: 
     - DotNetFramework
     - msbuild
